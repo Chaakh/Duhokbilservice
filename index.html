@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Duhok Bilservice — Bilverkstad i Göteborg sedan 2004</title>
+<meta name="description" content="Bilverkstad i Aröd, Göteborg sedan 2004. Service, bromsar, felsökning och besiktningshjälp för alla märken. Ring 073-952 47 01.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23101214'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23D3A45B' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+
+<!-- Hours are UNCONFIRMED. Prices are PLACEHOLDERS. See ATT-BEKRAFTA.md. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Duhok Bilservice",
+  "foundingDate": "2004",
+  "founder": { "@type": "Person", "name": "Farsat Zaki" },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Hildedalsgatan 62",
+    "postalCode": "417 05",
+    "addressLocality": "Göteborg",
+    "addressCountry": "SE"
+  },
+  "telephone": "+46739524701",
+  "email": "duhokbilservice@hotmail.se",
+  "areaServed": "Göteborg",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "08:30", "closes": "17:00"
+  }]
+}
+</script>
+
+<style>
+/* ------------------------------------------------------------------
+   Duhok Bilservice — en skärm, sex vyer.
+
+   Sidan scrollar aldrig. Fotot av verkstaden ligger still bakom allt,
+   namnet och flikarna står kvar överst, och flikarna byter vyn under
+   dem. Svenska genomgående.
+   ------------------------------------------------------------------ */
+:root{
+  --page:#101214;
+  --page-2:#191C1F;
+  --ink:#F2F1EE;
+  --ink-2:#C3C6C9;
+  --ink-3:#9AA0A5;
+  --line:rgba(242,241,238,.16);
+  --field:rgba(242,241,238,.34);
+  --brass:#8A6120;
+  --brass-lit:#D3A45B;
+  --ok:#4FA372;
+  --red:#D2745A;
+
+  --t-mark:clamp(1.75rem,4.4vw,2.75rem);
+  --t-hero:clamp(1.9rem,4.2vw,3.25rem);
+  --t-display:clamp(1.5rem,2.8vw,2.1rem);
+  --t-lead:clamp(1.05rem,1.6vw,1.35rem);
+  --t-body:1.0625rem;
+  --t-small:0.9375rem;
+
+  --gutter:clamp(1.1rem,4vw,3rem);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;overflow:hidden;background:var(--page);color:var(--ink);
+  font-family:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  font-size:var(--t-body);line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--brass-lit);color:#101214;}
+:where(a,button,input,textarea,[tabindex]):focus-visible{outline:2px solid var(--brass-lit);outline-offset:4px;}
+img{display:block;max-width:100%;}
+
+h1,h2,h3{
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;
+  font-weight:400;margin:0;line-height:1.12;letter-spacing:-.012em;text-wrap:balance;
+}
+h1{font-size:var(--t-hero);}
+h2{font-size:var(--t-display);}
+h3{font-size:var(--t-body);line-height:1.3;}
+p{margin:0;}
+a{color:inherit;}
+.lead{font-size:var(--t-lead);color:var(--ink-2);line-height:1.45;}
+.small{font-size:var(--t-small);color:var(--ink-3);}
+
+/* --- fotot: ligger still bakom alla vyer -------------------------- */
+.shell{
+  position:relative;isolation:isolate;
+  height:100svh;min-height:100%;
+  display:flex;flex-direction:column;
+  padding-inline:var(--gutter);
+}
+.shell::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:url("bilder/verkstad-utifran.jpg") center 42%/cover no-repeat;
+  filter:saturate(1.08) contrast(1.03);
+}
+.shell::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,
+    rgba(16,18,20,.88) 0%, rgba(16,18,20,.8) 38%,
+    rgba(16,18,20,.92) 78%, rgba(16,18,20,.97) 100%);
+}
+@media (max-width:700px){.shell::before{background-position:center 45%;}}
+
+/* --- namnet och flikarna: står kvar i alla vyer -------------------- */
+.masthead{flex:none;text-align:center;padding-top:clamp(1.1rem,3.4vw,2.2rem);}
+.mark{
+  display:inline-block;font-family:"Newsreader",Georgia,serif;
+  font-size:var(--t-mark);line-height:1.05;letter-spacing:.005em;
+  text-decoration:none;color:var(--ink);
+}
+.mark span{color:var(--brass-lit);}
+.tabs{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:.15rem clamp(.15rem,1.4vw,.9rem);
+  margin-top:clamp(.7rem,1.8vw,1.15rem);
+}
+.tabs a{
+  padding:.5rem .85rem;border-radius:1.6rem;
+  color:var(--ink-3);text-decoration:none;font-size:var(--t-small);
+  transition:color .2s var(--ease),background .2s var(--ease);
+}
+.tabs a:hover{color:var(--ink);}
+.tabs a[aria-current="page"]{color:var(--ink);background:rgba(242,241,238,.11);}
+
+/* --- vyerna: en i taget, alltid inom skärmen ---------------------- */
+.views{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;}
+.view{
+  display:none;width:100%;max-width:60rem;max-height:100%;
+  overflow-y:auto;overscroll-behavior:contain;
+  padding-block:clamp(1rem,3vw,2.5rem);text-align:center;
+}
+.view.on{display:block;animation:enter .45s var(--ease);}
+/* scrollisten finns kvar för låga fönster men syns först när man rör vyn */
+.view{scrollbar-width:thin;scrollbar-color:transparent transparent;}
+.view:hover,.view:focus-within{scrollbar-color:rgba(242,241,238,.22) transparent;}
+.view::-webkit-scrollbar{width:6px;}
+.view::-webkit-scrollbar-track{background:transparent;}
+.view::-webkit-scrollbar-thumb{background:transparent;border-radius:3px;}
+.view:hover::-webkit-scrollbar-thumb,.view:focus-within::-webkit-scrollbar-thumb{background:rgba(242,241,238,.22);}
+@keyframes enter{from{opacity:0;transform:translateY(.7rem);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:reduce){.view.on{animation:none;}}
+
+.foot{
+  flex:none;text-align:center;font-size:.8125rem;color:rgba(242,241,238,.42);
+  padding-block:clamp(.7rem,1.6vw,1.2rem);
+}
+@media (max-width:560px){.foot-adr{display:none;}}
+
+/* --- knappar ------------------------------------------------------ */
+.act{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:3.1rem;padding:.8rem 1.7rem;border-radius:2rem;
+  font-family:inherit;font-size:var(--t-body);font-weight:500;
+  text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:background .25s var(--ease),border-color .25s var(--ease);
+}
+.act--brass{background:var(--brass);color:#fff;}
+.act--brass:hover{background:#6E4C17;}
+.act--line{background:rgba(242,241,238,.07);color:var(--ink);border-color:var(--field);}
+.act--line:hover{background:rgba(242,241,238,.14);border-color:var(--ink);}
+.acts{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:clamp(1.2rem,3vw,2rem);}
+
+/* --- startvyn ----------------------------------------------------- */
+.start h1{margin-inline:auto;max-width:19ch;}
+.start h1 em{font-style:italic;color:var(--brass-lit);}
+.start .lead{margin:1.1rem auto 0;max-width:36ch;}
+.status{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.4rem;
+  margin-top:clamp(1.2rem,2.6vw,1.75rem);font-size:var(--t-small);color:var(--ink-3);
+}
+.status > span{display:inline-flex;align-items:center;gap:.45rem;}
+.pip{width:.45rem;height:.45rem;border-radius:50%;background:var(--ink-3);flex:none;}
+.pip--open{background:var(--ok);box-shadow:0 0 0 .22rem rgba(79,163,114,.2);}
+.pip--shut{background:var(--red);box-shadow:0 0 0 .22rem rgba(210,116,90,.18);}
+.allhours{color:var(--ink-3);text-decoration:underline;text-underline-offset:.2em;}
+.allhours:hover{color:var(--ink);}
+
+/* --- gemensamt för undervyerna ------------------------------------ */
+.view h2 + .lead{margin:.9rem auto 0;max-width:40ch;}
+.card{
+  background:rgba(16,18,20,.55);border:1px solid var(--line);border-radius:.75rem;
+  backdrop-filter:blur(6px);
+  padding:clamp(1rem,2.4vw,1.6rem) clamp(1rem,2.6vw,1.8rem);
+}
+
+
+/* öppettider */
+.rows{max-width:24rem;margin:clamp(1.2rem,2.6vw,1.9rem) auto 0;padding-left:.95rem;text-align:left;}
+.row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;
+  padding:.62rem 0;border-bottom:1px solid var(--line);font-size:var(--t-small);
+}
+.row:last-child{border-bottom:0;}
+/* dagen och tiden väger lika tungt — ingen av dem tonas ner */
+.row .k{color:var(--ink);}
+.row .t{font-variant-numeric:tabular-nums;}
+/* stängda dagar tonas ner, för där finns inget att hämta */
+.row--shut .k,.row--shut .t{color:var(--ink-3);}
+/* dagens rad: mässing plus en markör i marginalen */
+.row.now .k,.row.now .t{color:var(--brass-lit);}
+.row.now .k{position:relative;font-weight:500;}
+.row.now .k::before{
+  content:"";position:absolute;left:-.95rem;top:.5em;
+  width:.3rem;height:.3rem;border-radius:50%;background:var(--brass-lit);
+}
+
+/* om oss: löptext, inga sifferrutor */
+.prose{max-width:44ch;margin:clamp(1.1rem,2.6vw,1.7rem) auto 0;}
+.prose p + p{margin-top:.9rem;}
+.prose p{color:var(--ink-2);line-height:1.65;}
+.note{
+  margin:clamp(1.3rem,2.8vw,2rem) auto 0;max-width:44ch;
+  padding-top:clamp(1rem,2.2vw,1.4rem);border-top:1px solid var(--line);
+  color:var(--ink-3);font-size:var(--t-small);
+}
+
+/* hitta hit */
+.address{font-family:"Newsreader",Georgia,serif;font-size:var(--t-display);line-height:1.3;margin-top:1rem;}
+
+/* kontakt */
+.big-tel{
+  font-family:"Newsreader",Georgia,serif;font-size:clamp(1.9rem,4.2vw,2.8rem);
+  text-decoration:none;display:inline-block;margin-top:.6rem;
+}
+.big-tel:hover{color:var(--brass-lit);}
+.otherways{margin-top:.7rem;font-size:var(--t-small);color:var(--ink-3);line-height:1.9;}
+.otherways a{color:var(--ink-2);}
+form{
+  display:grid;gap:.75rem;max-width:32rem;margin:clamp(1.2rem,2.6vw,1.8rem) auto 0;text-align:left;
+  background:rgba(16,18,20,.55);border:1px solid var(--line);border-radius:.75rem;
+  backdrop-filter:blur(6px);padding:clamp(.9rem,2.2vw,1.4rem);
+}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+@media (max-width:520px){.two{grid-template-columns:1fr;}}
+label{display:grid;gap:.3rem;}
+label > span{font-size:.875rem;color:var(--ink-3);}
+input,textarea{
+  font-family:inherit;font-size:var(--t-body);color:var(--ink);
+  background:rgba(242,241,238,.07);border:1px solid var(--field);
+  border-radius:.35rem;padding:.7rem .85rem;width:100%;min-height:2.9rem;
+}
+input::placeholder,textarea::placeholder{color:rgba(242,241,238,.4);}
+input:hover,textarea:hover{border-color:rgba(242,241,238,.55);}
+input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:#E08A6C;}
+textarea{resize:none;min-height:4.2rem;line-height:1.45;}
+.assure{color:var(--ink-3);font-size:.875rem;line-height:1.5;}
+.assure b{color:var(--ink);font-weight:500;}
+.warn{display:none;color:#F0B4A2;font-size:var(--t-small);}
+.warn.on{display:block;}
+form .act{justify-self:center;}
+.done{border:1px solid var(--field);border-radius:.5rem;padding:1.3rem;max-width:30rem;margin:1.5rem auto 0;}
+.done p{color:var(--ink-2);font-size:var(--t-small);margin-top:.5rem;}
+.done .tiny{margin-top:.9rem;padding-top:.8rem;border-top:1px solid var(--line);color:var(--ink-3);}
+
+/* --- granskningsläge (inte för besökare: ?granska=1 eller G) ------ */
+[data-tbc]{position:relative;}
+body.granska [data-tbc]{outline:1px dashed var(--brass-lit);outline-offset:.4rem;}
+.flag{display:none;}
+body.granska .flag{
+  display:inline-flex;align-items:center;justify-content:center;position:absolute;
+  top:-.7rem;left:-.7rem;z-index:6;min-width:1.4rem;height:1.4rem;padding:0 .3rem;border-radius:50%;
+  background:var(--brass);color:#fff;font-size:.72rem;
+}
+.panel{
+  display:none;position:fixed;left:1rem;bottom:1rem;z-index:95;
+  width:min(22rem,calc(100vw - 2rem));max-height:min(24rem,60vh);overflow-y:auto;text-align:left;
+  background:var(--page-2);border:1px solid var(--line);border-radius:.5rem;
+  box-shadow:0 1rem 3rem rgba(0,0,0,.5);
+}
+body.granska .panel{display:block;}
+.panel h3{padding:.9rem 1.1rem .5rem;font-size:1.1rem;}
+.panel ol{margin:0;padding:0 0 .5rem;list-style:none;counter-reset:c;}
+.panel li{counter-increment:c;}
+.panel a{display:grid;grid-template-columns:1.3rem 1fr;gap:.5rem;padding:.5rem 1.1rem;text-decoration:none;color:var(--ink-2);font-size:.82rem;line-height:1.4;}
+.panel a::before{content:counter(c);color:var(--brass-lit);}
+.panel a:hover{background:rgba(242,241,238,.06);color:var(--ink);}
+
+/* ------------------------------------------------------------------
+   Ingenting får scrolla — inte sidan, inte vyn. Låga fönster och
+   telefoner drar därför ihop luften, och det som bara upprepar sig
+   (knappar med telefonnumret, andranumret) faller bort först.
+   ------------------------------------------------------------------ */
+@media (max-height:820px){
+  :root{
+    --t-hero:clamp(1.8rem,3.4vw,2.6rem);
+    --t-display:clamp(1.35rem,2.4vw,1.8rem);
+    --t-lead:clamp(1rem,1.4vw,1.15rem);
+  }
+  .view{padding-block:.8rem;}
+  .view h2 + .lead{margin-top:.6rem;}
+  .acts{margin-top:1.1rem;}
+  .rows{margin-top:1.1rem;}
+  .row{padding:.45rem 0;}
+  .prose p{font-size:.9375rem;}
+  .start .lead{margin-top:.9rem;}
+  .status{margin-top:1.1rem;}
+  form{margin-top:1rem;gap:.6rem;padding:.85rem 1rem;}
+  textarea{min-height:3.2rem;}
+  .big-tel{margin-top:.3rem;}
+  .card{padding:.9rem 1.1rem;}
+}
+@media (max-height:700px){
+  .masthead{padding-top:.8rem;}
+  .tabs{margin-top:.5rem;}
+  .view{padding-block:.6rem;}
+  .oppet-more{display:none;}   /* knappar som upprepar telefonnumret */
+  .assure{display:none;}
+}
+/* små telefoner och mycket låga fönster: bara det som bär vyn blir kvar */
+@media (max-width:760px) and (max-height:730px), (max-height:640px){
+  form{gap:.5rem;margin-top:.9rem;padding:.7rem .75rem;}
+  .two{gap:.5rem;}
+  input,textarea{min-height:2.6rem;padding:.55rem .8rem;}
+  textarea{min-height:2.7rem;}
+  .otherways{margin-top:.45rem;line-height:1.6;}
+  .big-tel{font-size:1.65rem;}
+  .view h2{font-size:1.3rem;}
+  .otherways{font-size:.85rem;}
+}
+/* de allra minsta telefonerna: andranumret och mejlen får vika för formuläret */
+@media (max-width:400px) and (max-height:660px){
+  .otherways{display:none;}
+  .view{padding-block:.45rem;}
+  label > span{font-size:.8125rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="masthead">
+    <a class="mark" href="#start">Duhok <span>Bilservice</span></a>
+    <nav class="tabs" aria-label="Sidnavigation">
+      <a href="#start">Start</a>
+      <a href="#omoss">Om oss</a>
+      <a href="#oppettider">Öppettider</a>
+      <a href="#hitta">Hitta hit</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main class="views">
+
+    <!-- START -->
+    <section class="view start" id="start" aria-labelledby="startH">
+      <h1 id="startH">Bilverkstad i Göteborg <em>sedan 2004</em></h1>
+      <p class="lead">Familjeverkstad på Hildedalsgatan sedan 2004. Alla märken, egna priser.</p>
+      <div class="acts">
+        <a class="act act--brass" href="tel:+46739524701">Ring 073-952 47 01</a>
+        <a class="act act--line" href="#kontakt">Boka tid</a>
+      </div>
+      <p class="status">
+        <span><span class="pip" id="pip"></span><span id="statusText">Mån–fre 08:30–17:00</span>
+          <a href="#oppettider" class="allhours">Alla tider</a></span>
+        <span>4,6 av 5 på Google · 53 omdömen</span>
+      </p>
+    </section>
+
+
+    <!-- OM OSS -->
+    <section class="view" id="omoss" aria-labelledby="omossH">
+      <h2 id="omossH">Om oss</h2>
+      <p class="lead" data-tbc="Stämmer 2004 som startår, och är Farsat Zaki fortfarande ägare?">Farsat Zaki öppnade verkstaden på Hildedalsgatan 2004. Det är samma familj som lagar bilarna i dag.</p>
+      <div class="prose">
+        <p>Du får priset innan vi rör bilen. Vi tittar, ringer och säger vad det kostar — säger du nej har det inte kostat dig något mer än resan hit.</p>
+        <p>Vi tar alla märken och årsmodeller. Kräver bilen en specialist säger vi det direkt i stället för att gissa.</p>
+      </div>
+      <p class="note">4,6 av 5 på Google · 53 omdömen</p>
+    </section>
+
+    <!-- ÖPPETTIDER -->
+    <section class="view" id="oppettider" aria-labelledby="oppetH">
+      <h2 id="oppetH">Öppettider</h2>
+      <p class="lead"><span class="pip" id="pip2" style="display:inline-block;vertical-align:middle;margin-right:.45rem"></span><span id="statusText2">Mån–fre 08:30–17:00</span></p>
+      <div class="rows" data-tbc="Bekräfta öppettiderna dag för dag, inklusive lunchstängt.">
+        <div class="row"><span class="k">Måndag</span><span class="t">08:30–17:00</span></div>
+        <div class="row"><span class="k">Tisdag</span><span class="t">08:30–17:00</span></div>
+        <div class="row"><span class="k">Onsdag</span><span class="t">08:30–17:00</span></div>
+        <div class="row"><span class="k">Torsdag</span><span class="t">08:30–17:00</span></div>
+        <div class="row"><span class="k">Fredag</span><span class="t">08:30–17:00</span></div>
+        <div class="row row--shut"><span class="k">Lördag</span><span class="t">Stängt</span></div>
+        <div class="row row--shut"><span class="k">Söndag</span><span class="t">Stängt</span></div>
+      </div>
+      <div class="acts oppet-more">
+        <a class="act act--brass" href="tel:+46739524701">Ring 073-952 47 01</a>
+        <a class="act act--line" href="#kontakt">Boka tid</a>
+      </div>
+    </section>
+
+    <!-- HITTA HIT -->
+    <section class="view" id="hitta" aria-labelledby="hittaH">
+      <h2 id="hittaH">Hitta hit</h2>
+      <p class="address">Hildedalsgatan 62<br>417 05 Göteborg</p>
+      <p class="lead" style="margin-top:1rem" data-tbc="Hur hittar kunden rätt på gården — egen infart, och var ska man parkera när man lämnar bilen?">I Aröd på Hisingen. Verkstaden ligger i den grå längan med skylten mot gatan, och portarna vetter mot gården.</p>
+      <div class="acts">
+        <a class="act act--brass" href="https://maps.google.com/?q=Hildedalsgatan+62,+417+05+G%C3%B6teborg" target="_blank" rel="noopener">Vägbeskrivning i Google Maps</a>
+        <a class="act act--line" href="tel:+46739524701">Ring 073-952 47 01</a>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="view" id="kontakt" aria-labelledby="kontaktH">
+      <h2 id="kontaktH">Boka tid</h2>
+      <a class="big-tel" href="tel:+46739524701">073-952 47 01</a>
+      <p class="otherways">
+        <a href="mailto:duhokbilservice@hotmail.se" data-tbc="Ska mejlen ligga kvar på hotmail?">duhokbilservice@hotmail.se</a>
+      </p>
+      <form id="cb" novalidate>
+        <div class="two">
+          <label><span>Namn</span>
+            <input id="n" name="namn" type="text" autocomplete="name" required aria-describedby="warn" placeholder="Anna Andersson"></label>
+          <label><span>Telefon</span>
+            <input id="t" name="tel" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="warn" placeholder="07X-XXX XX XX"></label>
+        </div>
+        <label><span>Vad händer med bilen? (valfritt)</span>
+          <textarea name="txt" placeholder="T.ex. skrapljud vid inbromsning."></textarea></label>
+        <p class="assure"><b>Du får priset innan vi börjar.</b> Vi ringer med kostnaden och rör ingenting förrän du sagt ja.</p>
+        <p class="warn" id="warn" role="alert"></p>
+        <button class="act act--brass" type="submit">Ring upp mig</button>
+      </form>
+      <div class="done" id="done" hidden>
+        <h3>Tack — vi hör av oss</h3>
+        <p>Vi ringer numret du lämnat, normalt samma arbetsdag. Du får kostnaden innan något arbete börjar.</p>
+        <p class="tiny">Prototyp: ingen förfrågan skickas än. Mejlutskicket kopplas på när sajten går live.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <p class="foot">Duhok Bilservice<span class="foot-adr"> · Hildedalsgatan 62, 417 05 Göteborg</span> · © <span id="yr"></span></p>
+</div>
+
+<aside class="panel" id="panel" aria-label="Att bekräfta med verkstaden">
+  <h3>Att bekräfta</h3>
+  <ol id="plist"></ol>
+</aside>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Öppettider i minuter från midnatt. OBEKRÄFTADE — se ATT-BEKRAFTA.md. */
+  var HOURS = {1:[510,1020],2:[510,1020],3:[510,1020],4:[510,1020],5:[510,1020],6:null,0:null};
+  var DAYS = ["söndag","måndag","tisdag","onsdag","torsdag","fredag","lördag"];
+
+  /* --- flikarna byter vy; sidan scrollar aldrig ------------------- */
+  var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
+  var tabs  = Array.prototype.slice.call(document.querySelectorAll(".tabs a"));
+  var ids   = views.map(function(v){ return v.id; });
+
+  function show(id){
+    if (ids.indexOf(id) < 0) id = "start";
+    views.forEach(function(v){ v.classList.toggle("on", v.id === id); v.scrollTop = 0; });
+    tabs.forEach(function(a){
+      if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+  }
+  function fromHash(){ show((location.hash || "#start").slice(1)); }
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+
+  function hhmm(m){ var h = Math.floor(m/60), n = m%60; return (h<10?"0":"")+h+":"+(n<10?"0":"")+n; }
+
+  function paint(){
+    var now = new Date(), day = now.getDay(), mins = now.getHours()*60 + now.getMinutes();
+    var today = HOURS[day];
+    var open = !!today && mins >= today[0] && mins < today[1];
+    var text;
+
+    if (open){
+      text = "Öppet nu till " + hhmm(today[1]);
+    } else {
+      var nx = null, off = 0, d = day;
+      for (var i = 0; i < 8; i++){
+        d = (day + i) % 7;
+        var h = HOURS[d];
+        if (h && !(i === 0 && mins >= h[0])){ nx = h; off = i; break; }
+      }
+      text = nx
+        ? "Stängt nu · öppnar " + (off === 0 ? "idag" : off === 1 ? "imorgon" : DAYS[d]) + " " + hhmm(nx[0])
+        : "Stängt";
+    }
+
+    ["statusText","statusText2"].forEach(function(id){
+      var el = document.getElementById(id); if (el) el.textContent = text;
+    });
+    ["pip","pip2"].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) el.className = "pip " + (open ? "pip--open" : "pip--shut");
+    });
+
+    var rows = document.querySelectorAll("#oppettider .row");
+    rows.forEach(function(r){ r.classList.remove("now"); });
+    var idx = day === 0 ? 6 : day - 1;
+    if (rows[idx]) rows[idx].classList.add("now");
+  }
+  paint();
+  setInterval(paint, 60000);
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  /* --- återuppringning ------------------------------------------- */
+  document.getElementById("cb").addEventListener("submit", function(e){
+    e.preventDefault();
+    var warn = document.getElementById("warn");
+    var n = document.getElementById("n"), t = document.getElementById("t");
+    var digits = t.value.replace(/\D/g, "");
+    var bad = null, msg = "";
+
+    if (!n.value.trim()){
+      bad = n; msg = "Skriv ditt namn så vet vi vem vi ringer.";
+    } else if (digits.length < 7){
+      bad = t; msg = "Kontrollera telefonnumret — det är dit vi ringer.";
+    }
+    n.setAttribute("aria-invalid", String(bad === n));
+    t.setAttribute("aria-invalid", String(bad === t));
+
+    if (bad){
+      warn.classList.add("on");
+      requestAnimationFrame(function(){ warn.textContent = msg; });
+      bad.focus();
+      return;
+    }
+    e.target.hidden = true;
+    var done = document.getElementById("done");
+    done.hidden = false;
+    done.setAttribute("tabindex", "-1");
+    done.focus();
+  });
+
+  /* --- granskningsläge — inte för besökare. ?granska=1 eller G. --- */
+  (function review(){
+    var items = Array.prototype.slice.call(document.querySelectorAll("[data-tbc]"));
+    if (!items.length) return;
+    var list = document.getElementById("plist");
+    items.forEach(function(el, i){
+      var f = document.createElement("span");
+      f.className = "flag"; f.setAttribute("aria-hidden","true"); f.textContent = i + 1;
+      el.insertBefore(f, el.firstChild);
+      var view = el.closest(".view");
+      var li = document.createElement("li"), a = document.createElement("a");
+      a.href = view ? "#" + view.id : "#start";
+      a.textContent = el.getAttribute("data-tbc");
+      li.appendChild(a); list.appendChild(li);
+    });
+    function set(on){ document.body.classList.toggle("granska", on); }
+    document.addEventListener("keydown", function(e){
+      if (/^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+      if (e.key === "Escape") set(false);
+      if (e.key === "g" || e.key === "G") set(!document.body.classList.contains("granska"));
+    });
+    set(/[?&]granska=1/.test(location.search));
+  })();
+})();
+</script>
+
+</body>
+</html>
